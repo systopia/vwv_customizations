@@ -36,7 +36,7 @@ class CRM_VwvCustomizations_CheckContactOnDelete {
       $results[] = $civi_query->toArray();
     }
     if (!empty($results)) {
-      throw new CRM_VwvCustomizations_Exceptions_LinkedContactException("Contact is Linked and cannot be deleted");
+      throw new CRM_VwvCustomizations_Exceptions_LinkedContactException("Contact ({$id}) is Linked and cannot be deleted");
     }
   }
 }
