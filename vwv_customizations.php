@@ -37,7 +37,7 @@ function vwv_customizations_civicrm_enable(): void {
  * @link https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_pre/
  */
 function vwv_customizations_civicrm_pre($op, $objectName, $id, &$params) {
-  if ($op == 'delete') {
+  if ($op == 'delete' || ($op == 'edit' && array_key_exists('is_deleted', $params) && $params['is_deleted'] == 1)) {
     CRM_VwvCustomizations_CheckContactOnDelete::validate($op, $objectName, $id, $params);
   }
 
