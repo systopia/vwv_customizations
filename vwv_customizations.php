@@ -30,3 +30,15 @@ function vwv_customizations_civicrm_install(): void {
 function vwv_customizations_civicrm_enable(): void {
   _vwv_customizations_civix_civicrm_enable();
 }
+
+/**
+ * Implements hook_civicrm_pre().
+ *
+ * @link https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_pre/
+ */
+function vwv_customizations_civicrm_pre($op, $objectName, $id, &$params) {
+  if ($op == 'delete') {
+    CRM_VwvCustomizations_CheckContactOnDelete::validate($op, $objectName, $id, $params);
+  }
+
+}
